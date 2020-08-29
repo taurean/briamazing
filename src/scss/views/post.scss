@@ -4,12 +4,24 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+
+    @include min-width-viewport(lg) {
+        display: flex;
+    }
 }
 
 .blogpost__header {
     display: flex;
     flex-direction: column;
     background: linear-gradient(180deg, get-color(orchid), get-color(salmon));
+
+    @include min-width-viewport(lg) {
+        max-height: 100vh;
+        position: sticky;
+        top: 0;
+        bottom: 0;
+        left: 0;
+    }
 }
 
 .blogpost__nav {
@@ -40,6 +52,14 @@
     @include set-type(masthead, 10, heavy);
     color: get-color(white);
     margin: 0 0 set-size(12);
+
+    @include min-width-viewport(sm) {
+        @include set-type-size(13);
+    }
+
+    @include min-width-viewport(lg) {
+        @include set-type-size(15);
+    }
 }
 
 .blogpost__readtime,
@@ -89,6 +109,16 @@
     display: block;
     max-width: 100%;
     padding: set-size(5);
+
+    @include min-width-viewport(sm) {
+        max-width: set-size(192);
+        padding: 0;
+        margin: set-size(5) auto;
+    }
+
+    @include min-width-viewport(lg) {
+        padding: set-size(5);
+    }
 }
 
 .blogpost__post-content figure {
@@ -107,18 +137,81 @@
 .blogpost__post-content p {
     @include set-type(body, 5);
     color: get-color(indigo);
+    padding: 0;
+    margin: 0;
+
+    @include min-width-viewport(sm) {
+        @include set-type-size(6);
+    }
 }
 
 .blogpost__post-content p:first-of-type {
     @include set-type-size(6);
-    @include set-type-weight(medium);
+    @include set-type-weight(bold);
+    margin: set-size(10) 0;
+
+    @include min-width-viewport(sm) {
+        @include set-type-size(8);
+    }
+}
+
+.blogpost__post-content a {
+    text-decoration: none;
+    color: get-color(pink);
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+        border-bottom: set-size(micro) solid get-color(pink);
+    }
+}
+
+.blogpost__post-content p + p {
+    margin-bottom: set-size(5);
+}
+
+.blogpost__post-content p + figure {
+    margin-top: set-size(5);
+}
+
+.blogpost__post-content figure + p {
+    margin: set-size(5) 0;
+}
+
+.blogpost__post-content h1 + p {
+    margin-bottom: set-size(5);
 }
 
 @supports (background-clip: text) or (-webkit-background-clip: text) {
-    .blogpost__post-content p:first-of-type {
+    .blogpost__post-content p:first-of-type,
+    .blogpost__post-content a {
         background-image: linear-gradient(120deg, get-color(orchid), get-color(salmon));
         background-clip: text;
         -webkit-background-clip: text;
         color: transparent;
+    }
+}
+
+.blogpost__post-content figcaption {
+    @include set-type(caption, 4);
+    @include set-type-line-height(xs);
+    border-bottom: set-size(pixel) solid get-color(soft-white, -1);
+    padding: set-size(2) set-size(1);
+    color: get-color(soft-black);
+
+    @include min-width-viewport(sm) {
+        @include set-type-size(5);
+    }
+}
+
+.blogpost__post-content h1,
+.blogpost__post-content h2,
+.blogpost__post-content h3,
+.blogpost__post-content h4 {
+    @include set-type(display, 6, heavy);
+    margin: set-size(8) 0 set-size(5);
+
+    @include min-width-viewport(sm) {
+        @include set-type-size(8);
     }
 }
