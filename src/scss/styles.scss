@@ -1,4 +1,7 @@
-@use "saturnfive/index" as *;
-@use "saturnfive/reset" as *;
+@use "index" as *;
+@use "reset" as *;
 
 @use "global" as *;
+
+// Views
+@use "views/post";

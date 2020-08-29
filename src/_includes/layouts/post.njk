@@ -5,22 +5,39 @@
 {% set codeinjection_foot = post.codeinjection_foot %}
 
 {% block content %}
-
-
-
-
-<article>
-    {% if post.feature_image %}
-    <figure class="post-feature-image">
-        <img src="{{ post.feature_image }}" alt="{{ title }}">
-    </figure>
-    {% endif %}
-    <section>
-        <h1>{{ title }}</h1>
-        <section>
+<article class="blogpost">
+    <header class="blogpost__header">
+        <nav class="blogpost__nav">
+            <a class="blogpost__home-link" href="/"><span>Home</span></a>
+        </nav>
+        <div class="blogpost__header-content">
+            <h1 class="blogpost__title">{{ title }}</h1>
+            <div class="blogpost__readtime">{{ post.html | safe | getReadingTime }} min read</div>
+            <div class="blogpost__attribution-group">
+                <div class="blogpost__publish-on">
+                    <span>Published on </span>
+                    <span><!-- Eleventy keeps removing a space here? --> </span>
+                    <date class="blogpost__publish-date">{{post.published_at.toDateString() }}</date>
+                </div>
+                <div class="blogpost__published-by">
+                    <span>Written by </span>
+                    <span class="blogpost__author-name">{{ post.primary_author.name }}</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="blogpost__main-content">
+        {% if post.feature_image %}
+        <section class="blogpost__image-wrapper">
+            <figure class="blogpost__featured-figure">
+                <img class="blogpost__featured-image" src="{{ post.feature_image }}" alt=" ">
+            </figure>
+        </section>
+        {% endif %}
+        <section class="blogpost__post-content">
             {{ content | safe }}
         </section>
-    </section>
+    </main>
 </article>
 {% endblock %}
 

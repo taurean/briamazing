@@ -1,0 +1,124 @@
+@use "index" as *;
+
+.blogpost {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.blogpost__header {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, get-color(orchid), get-color(salmon));
+}
+
+.blogpost__nav {
+    display: block;
+    margin: set-size(5);
+}
+
+.blogpost__home-link {
+    @include set-type(display, 5, medium);
+    color: get-color(soft-white, 0, 30);
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+    }
+}
+
+.blogpost__header-content {
+    display: flex;
+    flex-direction: column;
+    padding: 0 set-size(5);
+    margin-top: set-size(15);
+    margin-bottom: set-size(5);
+}
+
+.blogpost__title {
+    @include set-type(masthead, 10, heavy);
+    color: get-color(white);
+    margin: 0 0 set-size(12);
+}
+
+.blogpost__readtime,
+.blogpost__publish-on,
+.blogpost__published-by {
+    @include set-type(display, 6);
+    color: get-color(black, 0, 50);
+    margin: 0;
+}
+
+.blogpost__readtime {
+    order: -1;
+    margin-bottom: set-size(2);
+}
+
+.blogpost__publish-on {
+    margin-bottom: set-size(2);
+}
+
+.blogpost__author-name {
+    @include set-type-weight(bold);
+}
+
+.blogpost__main-content,
+.blogpost__image-wrapper {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.blogpost__featured-figure {
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+.blogpost__featured-image {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+.blogpost__post-content {
+    display: block;
+    max-width: 100%;
+    padding: set-size(5);
+}
+
+.blogpost__post-content figure {
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+.blogpost__post-content figure img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+.blogpost__post-content p {
+    @include set-type(body, 5);
+    color: get-color(indigo);
+}
+
+.blogpost__post-content p:first-of-type {
+    @include set-type-size(6);
+    @include set-type-weight(medium);
+}
+
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+    .blogpost__post-content p:first-of-type {
+        background-image: linear-gradient(120deg, get-color(orchid), get-color(salmon));
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+}
