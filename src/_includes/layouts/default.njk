@@ -49,11 +49,7 @@
 
     {% set css %}{% include "css/styles.css" %}{% endset %}
     <style>
-        {
-                {
-                css | cssmin | safe
-            }
-        }
+        {{ css | cssmin | safe }}
     </style>
 
     <script>
