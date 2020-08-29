@@ -5,7 +5,7 @@
   "main": ".eleventy.js",
   "scripts": {
     "dev": "cross-env ELEVENTY_ENV=dev eleventy --serve",
-    "build": "npm run sass && cross-env ELEVENTY_ENV=prod eleventy",
+    "build": "cross-env ELEVENTY_ENV=prod eleventy",
     "test": "npm run build",
     "sass": "sass --style=compressed src/scss/styles.scss src/_includes/css/styles.css",
     "watch:eleventy": "cross-env ELEVENTY_ENV=dev eleventy --serve",
